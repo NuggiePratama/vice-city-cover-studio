@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice City Cover Studio — GTA 6-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>VICE CITY COVER STUDIO</h1>
+    <p>Turn any photo and a caption into GTA 6-style multi-panel cover art. Offline, in your browser.</p>
+  </div>
+  <div class="top-actions">
+    <button id="undo" type="button">Undo</button>
+    <button id="redo" type="button">Redo</button>
+  </div>
+</header>
+<main class="studio">
+  <section class="stage-wrap">
+    <canvas id="stage" width="1080" height="1080" aria-label="Cover preview"></canvas>
+    <div id="panelchips" class="chips" aria-label="Panels"></div>
+    <p class="hint">Click a panel to select it, then drag the preview to reposition its photo.</p>
+  </section>
+  <aside class="controls">
+    <section>
+      <h2>1 · Photos</h2>
+      <label class="upload">Add your photos
+        <input id="upload" type="file" accept="image/*" multiple>
+      </label>
+      <div id="photos" class="row"></div>
+    </section>
+    <section>
+      <h2>2 · Layout</h2>
+      <div id="layouts" class="row"></div>
+    </section>
+    <section>
+      <h2>3 · Grade</h2>
+      <div id="grades" class="row"></div>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignette" type="checkbox" checked> Vignette</label>
+    </section>
+    <section>
+      <h2>4 · Caption</h2>
+      <label>Title <input id="title" type="text" maxlength="40" value="SUNSET HEIST"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="40" value="Vice City nights"></label>
+      <label>Title size <input id="titlesize" type="range" min="0.6" max="1.5" step="0.05" value="1"></label>
+      <label>Title height <input id="titlepos" type="range" min="0.12" max="0.92" step="0.01" value="0.88"></label>
+      <label>Letter spacing <input id="tracking" type="range" min="0" max="0.18" step="0.01" value="0.04"></label>
+    </section>
+    <section>
+      <h2>5 · Selected panel</h2>
+      <label>Zoom <input id="zoom" type="range" min="1" max="2.5" step="0.05" value="1"></label>
+    </section>
+    <section>
+      <h2>6 · Export PNG</h2>
+      <div id="sizes" class="row"></div>
+      <div class="row export-row">
+        <button type="button" data-export="square">Square</button>
+        <button type="button" data-export="portrait">Portrait</button>
+        <button type="button" data-export="wide">Wide</button>
+      </div>
+      <button id="exportall" type="button" class="primary">Export all three sizes</button>
+      <p id="status" role="status"></p>
+    </section>
+  </aside>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
